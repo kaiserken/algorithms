@@ -8,9 +8,7 @@ function a(n){
   for (var i = 0; i<=n; i++){
     var z = 0;
     while (z < lineLength){
-      if (i===0 && z === (n-i-1)){newstring+="A"; z+=1; continue;}
       if (z < (n-i)){newstring+=" "; z+=1; continue;}
-      if (i === 0 && z === n-i){newstring+=" "; z+=1; continue;}
       if (z === n-i){newstring+="A"; z+=1; continue;}
       if (i === midpoint){
         if (z >n-i && z < n+i){
@@ -27,7 +25,7 @@ function a(n){
       if (z === n+i){newstring+="A"; z+=1; continue;}
       if (z > (n+i)){newstring+=" "; z+=1; continue;}
     }
-  
+
     newstring += "\n";
   }
 

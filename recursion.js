@@ -23,6 +23,7 @@ let categories  = [
 
 let makeTree = (categories, parent) => {
 	let node = {};
+	//console.log(categories.filter(c => c.parent === parent));
 	categories.filter(c => c.parent === parent)
 	.forEach(c => node[c.id]= makeTree(categories, c.id));
 	return node;

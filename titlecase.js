@@ -28,6 +28,7 @@ function titleCase(title, minorWords) {
 
 function titleCase2(title, minorWords) {
   var minorWords = typeof minorWords !== "undefined" ? minorWords.toLowerCase().split(' ') : [];
+  console.log(minorWords);
   return title.toLowerCase().split(' ').map(function(v, i) {
     if(v != "" && ( (minorWords.indexOf(v) === -1) || i == 0)) {
       v = v.split('');
@@ -42,5 +43,5 @@ console.log("titleCase",
 titleCase('the quick brown fox', 'the')
 );
 console.log("titleCase2",
-titleCase2('the quick brown fox', 'the')
+titleCase2('the quick brown fox')
 );

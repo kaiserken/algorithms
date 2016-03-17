@@ -23,13 +23,9 @@ var techStocks = stocks.filter(function(stock){
   return stock.name + " is a " + stock.industry + " stock!";
 });
 
- var net  = function(scores, scoreadj){
-  var i = -1;
-  var netScore  = scores.map(function(score){
-    i++;
-    return score - scoreadj[i];
-  });
-  return netScore;
-};
+var netScore  = scores.map(function(score, i){
+  return score - scoreadj[i];
+});
+
 
 var Player1Net  = net(scores, scoreadj);

@@ -1,8 +1,6 @@
 function pigIt(str){
   return str.split(" ").map(function(element){
-    var end = element.slice(0,1);
-    var start = element.slice(1, element.length);
-    element  = start + end + "ay";
+    element  = element.slice(1) + element.slice(0,1) + "ay";
     return element;
   }).join(" ");
 }

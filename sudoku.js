@@ -4,6 +4,7 @@ function validSolution(board){
   var temp = true;
   var columns = [];
   var grid = [];
+
   grid[0] = board[0].slice(0,3).concat(board[1].slice(0,3), board[2].slice(0,3));
   grid[1] = board[3].slice(0,3).concat(board[4].slice(0,3), board[5].slice(0,3));
   grid[2] = board[6].slice(0,3).concat(board[7].slice(0,3), board[8].slice(0,3));
@@ -13,6 +14,7 @@ function validSolution(board){
   grid[6] = board[0].slice(6,9).concat(board[1].slice(6,9), board[2].slice(6,9));
   grid[7] = board[3].slice(6,9).concat(board[4].slice(6,9), board[5].slice(6,9));
   grid[8] = board[6].slice(6,9).concat(board[7].slice(6,9), board[8].slice(6,9));
+
   for (var i = 0; i< board.length; i++){
     columns[i]=[];
     for (var j = 0; j< board.length; j++){

@@ -1,7 +1,7 @@
-var p1 = [4,3,4,4,3,4,4,3,4,4,3,4,4,3];
-var p3 = [1,1,1,5,5,1,8,1,3,2,1,7,1,3];
-var p2 = [4,3,4,2,5,4,2,1,3,2,5,7,4,3];
-var p4 = [1,2,1,1,1,1,1,1,1,1,2,3,4,3];
+var p1 = [3,6,3,3,6,3,3,6,3,3,6,3,4,5];
+var p2 = [5,3,4,5,3,4,5,3,4,5,3,4,5,4];
+var p3 = [2,5,7,2,5,7,2,5,7,2,2,2,2,4];
+var p4 = [4,3,4,4,3,4,4,3,4,4,3,4,5,3];
 // takes an array arr of player score arrays between 2-4 returns an array of arrays
 function MatchPlay(arr, team, nassau) {
   var results1 = [],
@@ -35,7 +35,11 @@ function MatchPlay(arr, team, nassau) {
           matchResults.push(state);
         }
       }
-      if (Math.abs(state)>18-results1.length){break;}
+      if(!nassau){
+        if (Math.abs(state)>18-results1.length){
+          break;
+        }
+      }
     }
   }
   if (arr.length === 4){
@@ -64,7 +68,11 @@ function MatchPlay(arr, team, nassau) {
           matchResults.push(state);
         }
       }
-      if (Math.abs(state)>18-results1.length){break;}
+      if(!nassau){
+        if (Math.abs(state)>18-results1.length){
+          break;
+        }
+      }
     }
   }
   if(nassau){return [matchResults, stateArray];}

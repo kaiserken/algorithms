@@ -1,9 +1,9 @@
 var MatchPlay  = require('./matchplay');
 
-var p1 = [4,3,3,4,5,4,3,3,4,3,3,4,2,4,5,4,5,5];
-var p2 = [4,3,2,2,5,4,3,3,4,3,3,4,2,4,5,4,5,5];
-var p3 = [4,3,3,4,4,3,3,3,4,3,3,4,2,4,5,4,5,5];
-var p4 = [4,3,3,4,5,4,3,3,4,3,3,4,2,4,5,4,5,5];
+var p1 = [3,6,3,3,6,3,3,6,3,3,6,3,4,5];
+var p2 = [5,3,4,5,3,4,5,3,4,5,3,4,5,4];
+var p3 = [2,5,7,2,5,7,2,5,7,2,2,2,2,4];
+var p4 = [4,3,4,4,3,4,4,3,4,4,3,4,5,3];
 
 function Nassau(scores, team) {
   var totalbets = [];
@@ -24,16 +24,23 @@ function Nassau(scores, team) {
         totalbets.push(total[0]);
         if (scores.length ===4){
         scores = [scores[0].slice(i+1), scores[1].slice(i+1),scores[2].slice(i+1), scores[3].slice(i+1)];
-      } else{
-        scores = [scores[0].slice(i+1), scores[1].slice(i+1)];
-      }
-        return Bets(scores, total, team, totalbets);
+        } else{
+          scores = [scores[0].slice(i+1), scores[1].slice(i+1)];
+        }
+          return Bets(scores, total, team, totalbets);
       }
     }
     return;
   }
   Bets(scores, total, team, totalbets);
+
+  var x = totalbets.map(function(element){
+    var y  = totalbets[0].length;
+    while (element.length < y){
+      element.unshift('-');
+    }
+  });
   return totalbets;
 }
 
-console.log(Nassau([p1,p2,p3,p4],[1,2,3,4], "nassau"));
+console.log(Nassau([p1,p2,p3,p4],[1,3,4,2], "nassau"));

@@ -59,19 +59,63 @@
 // fs[2]();
 
 
-var person  = {
-  firstname: 'John',
-  lastname: 'Doe',
-  getFullName : function(){
-    var fullName  = this.firstname + " " + this.lastname;
-    return fullName;
+// var person  = {
+//   firstname: 'John',
+//   lastname: 'Doe',
+//   getFullName : function(){
+//     var fullName  = this.firstname + " " + this.lastname;
+//     return fullName;
+//   }
+// };
+//
+// var logName  = function(lang1, lang2){
+//   console.log('logged '+ this.getFullName());
+// }.bind(person);
+//
+// var logPersonname  = logName.bind(person);
+//
+// console.log(logName());
+
+// function multiply(a,b){
+//   return a * b;
+// }
+//
+// var multiplyByTwo  = multiply.bind(this, 2);
+//
+// console.log(multiplyByTwo(12));
+
+var arr1 = [1,2,3];
+console.log(arr1);
+
+function mapForEach(arr, fn){
+  var newArr = [];
+  for (var i = 0; i< arr.length; i++){
+    newArr.push(
+      fn(arr[i])
+    );
   }
+  return newArr;
+}
+
+var arr2 = mapForEach(arr1, function(item){
+  return item * 2;
+});
+
+console.log(arr2);
+
+var checkPastLimit = function(limiter, item){
+  return item > limiter;
 };
 
-var logName  = function(lang1, lang2){
-  console.log('logged '+ this.getFullName());
-}.bind(person);
+var checkPastLimit2 = function(limiter){
+  return function(limiter, item){
+    return item > limiter;
+  }.bind(this, limiter);
+};
 
-var logPersonname  = logName.bind(person);
+var arr3 = arr1.map(checkPastLimit.bind(this, 0));
+var arr4  = arr1.map(checkPastLimit2(1));
 
-console.log(logName());
+
+console.log(arr3);
+console.log(arr4);

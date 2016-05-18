@@ -26,7 +26,7 @@ function snail(array) {
   }
   newArr.pop();
   newArr.shift();
-
+  // use recursion to handle unlimited size of n*n grid;
   if(newArr.length){
     solution.push(snail(newArr));
   }
@@ -36,13 +36,7 @@ function snail(array) {
   return merged;
 
 }
-// 4,3,3,2,2,1,1 // looking for a pattern to code - think i got it!!
-//
-// 5,4,4,3,3,2,2,1,1
-//
-// 6,5,5,4,4,3,3,2,2,1,1
-//
-// 3,2,2,1,1
+
 
 
 console.log(snail(array));

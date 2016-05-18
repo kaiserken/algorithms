@@ -5,14 +5,16 @@ var array = [
             [18,31,36,35,26,9],
             [17,30,29,28,27,10],
             [16,15,14,13,12,11],
+          //  [1]
             ];
 
 
 function snail(array) {
   var newArr  = array.slice();
-  var length = newArr.length
+  var length = newArr.length;
+  if (length === 1){return(array[0]);}
   var solution = [];
-  solution.push(newArr[0])
+  solution.push(newArr[0]);
   for (var i = 1; i<length-1; i++){
     solution.push(newArr[i][length-1]);
     newArr[i].pop();

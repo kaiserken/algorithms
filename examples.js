@@ -84,38 +84,68 @@
 //
 // console.log(multiplyByTwo(12));
 
-var arr1 = [1,2,3];
-console.log(arr1);
+// var arr1 = [1,2,3];
+// console.log(arr1);
+//
+// function mapForEach(arr, fn){
+//   var newArr = [];
+//   for (var i = 0; i< arr.length; i++){
+//     newArr.push(
+//       fn(arr[i])
+//     );
+//   }
+//   return newArr;
+// }
+//
+// var arr2 = mapForEach(arr1, function(item){
+//   return item * 2;
+// });
+//
+// console.log(arr2);
+//
+// var checkPastLimit = function(limiter, item){
+//   return item > limiter;
+// };
+//
+// var checkPastLimit2 = function(limiter){
+//   return function(limiter, item){
+//     return item > limiter;
+//   }.bind(this, limiter);
+// };
+//
+// var arr3 = arr1.map(checkPastLimit.bind(this, 0));
+// var arr4  = arr1.map(checkPastLimit2(1));
+//
+//
+// console.log(arr3);
+// console.log(arr4);
 
-function mapForEach(arr, fn){
-  var newArr = [];
-  for (var i = 0; i< arr.length; i++){
-    newArr.push(
-      fn(arr[i])
-    );
-  }
-  return newArr;
-}
+// classical vs prototypal inheritance  - inheritance  - one object gets access to properties and methods
+// of another object
 
-var arr2 = mapForEach(arr1, function(item){
-  return item * 2;
-});
+// classical inheritance  - verbose  - massive collections are built  -
 
-console.log(arr2);
+// prototypal inheritance  - prototype  - proto is an object - each object can have its own prototype
 
-var checkPastLimit = function(limiter, item){
-  return item > limiter;
-};
+// var person  = {
+//   firstname : 'default',
+//   lastname : 'default',
+//   getFullName : function(){
+//     return this.firstname + " " + this.lastname;
+//   }
+// };
+//
+// var john  = {
+//   firstname: 'John',
+//   lastname: "doe",
+// };
+//
+// // dont ever do this  - but this helps explain what is going on  - performance problem
+//
+// john.__proto__  = person;
+//
+// console.log(john.getFullName());
 
-var checkPastLimit2 = function(limiter){
-  return function(limiter, item){
-    return item > limiter;
-  }.bind(this, limiter);
-};
+// everything in javascript is an object or primitive;
 
-var arr3 = arr1.map(checkPastLimit.bind(this, 0));
-var arr4  = arr1.map(checkPastLimit2(1));
-
-
-console.log(arr3);
-console.log(arr4);
+// reflection and extend  - reflection an object can look at itself listing and changing its methods

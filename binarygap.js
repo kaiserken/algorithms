@@ -28,7 +28,7 @@ function solution(N) {
     var largest = 0;
     var count  = 0;
     for (var i = 0; i<bin.length; i++){
-      if (bin[i]=== "1" && bin[i+1]==="1"){continue}
+      if (bin[i]=== "1" && bin[i+1]==="1"){continue;}
       if (bin[i]=== "1" && bin[i+1]==="0"){
         i++;
         while (bin[i]==="0" && i<bin.length){

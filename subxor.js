@@ -1,4 +1,5 @@
 input = [4,2,1,1,3]
+// first number is length so it is shifted off
 
 function processData(input) {
     input.shift();
@@ -25,7 +26,7 @@ function processData(input) {
     while (dup.length){
       memo(dup);
       input.shift();
-      var dup = input.slice();
+      dup = input.slice();
     }
     var max = 0;
     var keyval = null;

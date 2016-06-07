@@ -1,9 +1,13 @@
-input = [4,2,1,1,3]
+input = "4\n2\n1\n1\n3\n"
+
 // first number is length so it is shifted off
 
 function processData(input) {
-    input.shift();
-    var dup  = input.slice();
+  var inputArray = input.split("\n");
+  console.log(inputArray);
+    inputArray.pop();
+    inputArray.shift();
+    var dup  = inputArray.slice();
     var history = {};
     function help(array){
       return array.reduce(function(sum, element){
@@ -25,8 +29,8 @@ function processData(input) {
     }
     while (dup.length){
       memo(dup);
-      input.shift();
-      dup = input.slice();
+      inputArray.shift();
+      dup = inputArray.slice();
     }
     var max = 0;
     var keyval = null;

@@ -1,4 +1,4 @@
-//reviewing basics and design patterns javascript
+//reviewing design patterns javascript
 
 // module Patterns
 
@@ -212,3 +212,154 @@ var myModule = (function () {
 })();
 
 myModule.publicMethod();
+
+//revealing modules
+var myRevealingModule = (function () {
+
+        var privateVar = "Ben Cherry",
+            publicVar = "Hey there!";
+
+        function privateFunction() {
+            console.log( "Name:" + privateVar );
+        }
+
+        function publicSetName( strName ) {
+            privateVar = strName;
+        }
+
+        function publicGetName() {
+            privateFunction();
+        }
+
+
+        // Reveal public pointers to
+        // private functions and properties
+
+        return {
+            setName: publicSetName,
+            greeting: publicVar,
+            getName: publicGetName
+        };
+
+    })();
+
+myRevealingModule.setName( "Paul Kinlan" );
+myRevealingModule.getName();
+console.log(myRevealingModule);
+
+
+// singletons  - create if doesn't exist otherwise reference existing
+var mySingleton = (function () {
+
+  // Instance stores a reference to the Singleton
+  var instance;
+
+  function init() {
+
+    // Singleton
+
+    // Private methods and variables
+    function privateMethod(){
+        console.log( "I am private" );
+    }
+
+    var privateVariable = "Im also private";
+
+    var privateRandomNumber = Math.random();
+
+    return {
+
+      // Public methods and variables
+      publicMethod: function () {
+        console.log( "The public can see me!" );
+      },
+
+      publicProperty: "I am also public",
+
+      getRandomNumber: function() {
+        return privateRandomNumber;
+      }
+
+    };
+
+  };
+
+  return {
+
+    // Get the Singleton instance if one exists
+    // or create one if it doesn't
+    getInstance: function () {
+
+      if ( !instance ) {
+        instance = init();
+      }
+
+      return instance;
+    }
+
+  };
+
+})();
+
+var singleA = mySingleton.getInstance();
+var singleB = mySingleton.getInstance();
+console.log( singleA.getRandomNumber() === singleB.getRandomNumber() ); // true
+
+// another example when we want to set parameter of Singleton
+var SingletonTester = (function () {
+
+  // options: an object containing configuration options for the singleton
+  // e.g var options = { name: "test", pointX: 5};
+  function Singleton( options ) {
+
+    // set options to the options supplied
+    // or an empty object if none are provided
+    options = options || {};
+
+    // set some properties for our singleton
+    this.name = "SingletonTester";
+
+    this.pointX = options.pointX || 6;
+
+    this.pointY = options.pointY || 10;
+
+  }
+
+  // our instance holder
+  var instance;
+
+  // an emulation of static variables and methods
+  var _static = {
+
+    name: "SingletonTester",
+
+    // Method for getting an instance. It returns
+    // a singleton instance of a singleton object
+    getInstance: function( options ) {
+      if( instance === undefined ) {
+        instance = new Singleton( options );
+      }
+
+      return instance;
+
+    }
+  };
+
+  return _static;
+
+})();
+
+var singletonTest = SingletonTester.getInstance({
+  pointX: 5
+});
+
+var singletonTest = SingletonTester.getInstance({
+  pointX: 6
+});
+
+// Log the output of pointX just to verify it is correct
+// Outputs: 5
+console.log( singletonTest.pointX );
+
+
+// observer pattern

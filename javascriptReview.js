@@ -21,3 +21,23 @@ function a(b){
 
 console.log(a.call(k, 2));
 console.log(a.call(j, 2));
+
+
+
+function b(){
+    var totals = [];
+    for (var i = 0; i< arguments.length; i++ ){
+      totals.push(arguments[i]*2)
+    }
+    return totals;
+}
+
+console.log(b.apply(null, k));
+console.log(b.apply(null, j));
+
+function c(){
+    var args = [].slice.apply(arguments);
+    return (args.map(element => 2 * element));
+}
+console.log(c.apply(null, k));
+console.log(c.apply(null, j));

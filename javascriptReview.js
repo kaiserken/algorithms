@@ -12,6 +12,8 @@
 // variable hoisting - hoists declaration of variable  - before assigning  - that is why you can undefined - same thing // // happens in a function - but hoisted in function scope
 // This is determined by the calling context - if there isn't a calling context "this refers to the window" "use strict" can prevent errors of the 'this' keyword pointing to global object"
 
+// bind only works with function expressions
+
 var k = [1,2,3];
 var j = [4,5,6];
 
@@ -27,7 +29,7 @@ console.log(a.call(j, 2));
 function b(){
     var totals = [];
     for (var i = 0; i< arguments.length; i++ ){
-      totals.push(arguments[i]*2)
+      totals.push(arguments[i]*2);
     }
     return totals;
 }
